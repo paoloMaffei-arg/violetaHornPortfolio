@@ -1,0 +1,9 @@
+# scratch / tooling
+.superpowers/
+# raw client assets (optimized copies live in public/)
+Contenido Audiovisual/
+# next.js / node (create-next-app appends more in Task 1)
+node_modules/
+.next/
+out/
+.env*
