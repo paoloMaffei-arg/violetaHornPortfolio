@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState, type FocusEvent } from "react";
 import { useTranslations } from "next-intl";
 import LangSwitcher from "./LangSwitcher";
 import { profile } from "@/content/profile";
@@ -10,8 +10,27 @@ const NAV_ITEMS = ["reel", "about", "portfolio", "acting", "contact"] as const;
 export default function Nav() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const close = () => setOpen(false);
+
+  // Escape-to-close, while the mobile overlay is open.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // Close if keyboard focus moves outside the overlay (e.g. Tab past the last link).
+  const handleMenuBlur = (e: FocusEvent<HTMLDivElement>) => {
+    const next = e.relatedTarget as Node | null;
+    if (!next || !menuRef.current?.contains(next)) {
+      close();
+    }
+  };
 
   return (
     <>
@@ -68,6 +87,9 @@ export default function Nav() {
 
       <div
         id="mobile-menu"
+        ref={menuRef}
+        aria-hidden={!open}
+        onBlur={handleMenuBlur}
         className={`fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col items-center justify-center gap-8 bg-bg transition-opacity duration-200 md:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
@@ -77,12 +99,13 @@ export default function Nav() {
             key={key}
             href={`#${key}`}
             onClick={close}
+            tabIndex={open ? 0 : -1}
             className="font-display text-2xl tracking-widest text-fg"
           >
             {t(key)}
           </a>
         ))}
-        <LangSwitcher />
+        <LangSwitcher tabIndex={open ? 0 : -1} />
       </div>
     </>
   );
