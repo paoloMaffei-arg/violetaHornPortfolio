@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Reveal({
   children,
@@ -10,7 +11,9 @@ export default function Reveal({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
-  if (reduce) return <>{children}</>;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (mounted && reduce) return <>{children}</>;
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
