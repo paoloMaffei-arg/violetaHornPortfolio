@@ -1,0 +1,12 @@
+{
+  "nav": { "reel": "Reel", "about": "Sobre mí", "portfolio": "Portfolio", "acting": "Actriz", "contact": "Contacto" },
+  "hero": { "tagline": "Actriz & Modelo · Buenos Aires", "watchReel": "Ver reel", "whatsapp": "WhatsApp" },
+  "reel": { "title": "Reel", "play": "Reproducir" },
+  "about": { "title": "Sobre mí", "body": "Tengo 21 años. Estudio la Licenciatura en Artes Escénicas y el Traductorado Público en UADE (CABA). Tomo clases de danza contemporánea, jazz y urbano, y soy nivel intermedio-avanzado en acrobacia." },
+  "stats": { "title": "Ficha técnica", "height": "Altura", "measures": "Medidas", "top": "Remera", "pants": "Pantalón", "shoes": "Calzado", "hair": "Pelo", "eyes": "Ojos", "hairValue": "Castaño", "eyesValue": "Negros", "representation": "Representación (audiovisual)", "downloadCard": "Descargar comp card" },
+  "portfolio": { "title": "Portfolio", "all": "Todo", "moda": "Moda", "beauty": "Beauty", "comercial": "Comercial", "editorial": "Editorial", "viewAll": "Ver galería completa" },
+  "acting": { "title": "Actriz", "creditsTitle": "Créditos", "credits": "Cortos universitarios", "trainingTitle": "Formación", "skillsTitle": "Skills", "skills": "Español · Inglés · Danza contemporánea · Jazz · Urbano · Acrobacia de piso (intermedio-avanzado) · Carnet náutico · Carnet de auto", "downloadCV": "Descargar CV" },
+  "contact": { "title": "Contacto", "lead": "¿Trabajamos juntos?", "whatsapp": "Escribime por WhatsApp", "prefill": "Hola Violeta, te contacto desde tu web." },
+  "footer": { "rights": "Todos los derechos reservados" },
+  "meta": { "title": "Violeta Horn — Actriz & Modelo", "description": "Portfolio de Violeta Horn, actriz y modelo con base en Buenos Aires. Reel, book de fotos, ficha técnica y contacto." }
+}
