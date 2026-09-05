@@ -28,6 +28,15 @@ export default function Lightbox({
   }, []);
 
   useEffect(() => {
+    // Lock body scroll while the lightbox is open, restore on close.
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
+  useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();

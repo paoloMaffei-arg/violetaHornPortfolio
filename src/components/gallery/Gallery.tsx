@@ -1,12 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { Photo } from "@/content/gallery";
 import Lightbox from "./Lightbox";
 
 export default function Gallery({ photos }: { photos: Photo[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+
+  const openAt = (i: number, trigger: HTMLButtonElement) => {
+    triggerRef.current = trigger;
+    setOpenIndex(i);
+  };
+
+  const close = () => {
+    setOpenIndex(null);
+    // Return keyboard focus to the thumbnail that opened the lightbox, so a
+    // keyboard user doesn't lose their place in the grid.
+    triggerRef.current?.focus();
+  };
 
   return (
     <>
@@ -15,7 +28,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
           <button
             key={photo.src}
             type="button"
-            onClick={() => setOpenIndex(i)}
+            onClick={(e) => openAt(i, e.currentTarget)}
             aria-label={photo.alt}
             className="group relative aspect-[3/4] w-full overflow-hidden border border-fg/10 bg-carbon"
           >
@@ -31,11 +44,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
       </div>
 
       {openIndex !== null && (
-        <Lightbox
-          photos={photos}
-          index={openIndex}
-          onClose={() => setOpenIndex(null)}
-        />
+        <Lightbox photos={photos} index={openIndex} onClose={close} />
       )}
     </>
   );
