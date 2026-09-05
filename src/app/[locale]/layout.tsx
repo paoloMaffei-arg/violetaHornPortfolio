@@ -3,6 +3,8 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import "../globals.css";
 
 const playfair = Playfair_Display({
@@ -42,7 +44,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={`${playfair.variable} ${inter.variable} antialiased`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Nav />
+          {children}
+          <Footer />
+        </NextIntlClientProvider>
       </body>
     </html>
   );
