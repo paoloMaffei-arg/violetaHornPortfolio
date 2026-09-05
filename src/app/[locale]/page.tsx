@@ -1,4 +1,5 @@
 import About from "@/components/sections/About";
+import ActingCV from "@/components/sections/ActingCV";
 import Hero from "@/components/sections/Hero";
 import PortfolioPreview from "@/components/sections/PortfolioPreview";
 import Reel from "@/components/sections/Reel";
@@ -12,6 +13,7 @@ export default function Home() {
       <About />
       <Stats />
       <PortfolioPreview />
+      <ActingCV />
     </main>
   );
 }
