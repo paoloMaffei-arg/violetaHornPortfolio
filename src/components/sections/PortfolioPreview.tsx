@@ -15,12 +15,10 @@ export default function PortfolioPreview() {
       <div className="mx-auto w-full max-w-6xl px-6">
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <h2 className="font-display text-3xl tracking-wide text-fg sm:text-4xl">
-              {t("title")}
-            </h2>
+            <h2 className="text-4xl text-fg sm:text-5xl">{t("title")}</h2>
             <Link
               href="/portfolio"
-              className="text-sm uppercase tracking-widest text-fg/80 underline underline-offset-4 transition-colors hover:text-fg"
+              className="link-underline text-xs font-medium uppercase tracking-[0.22em] text-fg/80 transition-colors hover:text-fg"
             >
               {t("viewAll")}
             </Link>

@@ -1,4 +1,4 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -7,10 +7,11 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import "../globals.css";
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-fraunces",
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 const inter = Inter({
@@ -73,7 +74,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={`${playfair.variable} ${inter.variable} antialiased`}>
+      <body className={`${fraunces.variable} ${inter.variable} antialiased`}>
         <NextIntlClientProvider>
           <Nav />
           {children}
