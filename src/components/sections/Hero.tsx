@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
 import { profile } from "@/content/profile";
@@ -9,6 +10,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export default function Hero() {
   const tHero = useTranslations("hero");
   const tContact = useTranslations("contact");
+  const reduceMotion = useReducedMotion();
 
   const whatsappUrl = buildWhatsAppUrl(profile.whatsapp, tContact("prefill"));
 
@@ -23,7 +25,7 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-[58%_35%]"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
@@ -63,15 +65,17 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute inset-x-0 bottom-8 flex justify-center"
       >
-        <svg
-          className="h-6 w-6 animate-bounce text-fg/60"
+        <motion.svg
+          className="h-6 w-6 text-fg/60"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           strokeWidth={1.5}
+          animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, ease: "easeInOut", duration: 2 }}
         >
           <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        </motion.svg>
       </div>
     </section>
   );
