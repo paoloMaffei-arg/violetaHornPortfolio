@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
+import RevealHeading from "@/components/RevealHeading";
 import SocialLinks from "@/components/SocialLinks";
 import { profile } from "@/content/profile";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -12,7 +13,9 @@ export default function Contact() {
     <section id="contact" className="w-full bg-carbon py-24 sm:py-32">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center px-6 text-center">
         <Reveal>
-          <h2 className="text-4xl text-fg sm:text-6xl">{t("title")}</h2>
+          <h2 className="text-4xl text-fg sm:text-6xl">
+            <RevealHeading>{t("title")}</RevealHeading>
+          </h2>
         </Reveal>
         <Reveal delay={0.15}>
           <p className="mt-6 max-w-md text-base text-muted sm:text-lg">

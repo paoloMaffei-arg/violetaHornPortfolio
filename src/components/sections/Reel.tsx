@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import RevealHeading from "@/components/RevealHeading";
 import VideoFacade from "@/components/VideoFacade";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -34,7 +35,9 @@ export default function Reel() {
     <section id="reel" className="w-full bg-bg pb-24 pt-8 sm:pb-32 sm:pt-12">
       <div className="mx-auto w-full max-w-6xl px-6">
         <div className="flex items-end gap-6">
-          <h2 className="shrink-0 text-4xl text-fg sm:text-5xl">{t("title")}</h2>
+          <h2 className="shrink-0 text-4xl text-fg sm:text-5xl">
+            <RevealHeading>{t("title")}</RevealHeading>
+          </h2>
           <span className="mb-2 h-px flex-1 bg-line" />
         </div>
 

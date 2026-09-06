@@ -1,5 +1,6 @@
 import { useLocale, useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
+import RevealHeading from "@/components/RevealHeading";
 import { profile } from "@/content/profile";
 
 export default function ActingCV() {
@@ -12,7 +13,7 @@ export default function ActingCV() {
         <Reveal>
           <div className="flex items-end gap-6">
             <h2 className="shrink-0 text-4xl text-fg sm:text-5xl">
-              {t("title")}
+              <RevealHeading>{t("title")}</RevealHeading>
             </h2>
             <span className="mb-2 h-px flex-1 bg-line" />
           </div>

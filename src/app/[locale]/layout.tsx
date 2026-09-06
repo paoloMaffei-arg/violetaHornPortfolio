@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
 import "../globals.css";
 
 const fraunces = Fraunces({
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body className={`${fraunces.variable} ${inter.variable} antialiased`}>
         <NextIntlClientProvider>
+          <SmoothScroll />
           <Nav />
           {children}
           <Footer />

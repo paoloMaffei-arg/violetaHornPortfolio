@@ -13,10 +13,15 @@ export default function Hero() {
 
   const whatsappUrl = buildWhatsAppUrl(profile.whatsapp, tContact("prefill"));
 
+  // Split "Actriz & Modelo · Buenos Aires" into corner metadata labels.
+  const [roleLabel, placeLabel] = tHero("tagline")
+    .split("·")
+    .map((s) => s.trim());
+
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] w-full items-end overflow-hidden pb-24 sm:items-center sm:pb-0"
+      className="relative flex min-h-[100svh] w-full flex-col justify-end overflow-hidden"
     >
       {/* Background photo with a slow settle (focal load moment) */}
       <div className="hero-img absolute inset-0">
@@ -26,33 +31,47 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[58%_30%]"
+          className="object-cover object-[58%_28%]"
         />
       </div>
 
-      {/* Cinematic grade: darken left for text, vignette, and a fade into the page below */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_70%_30%,transparent_40%,rgba(0,0,0,0.55)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-bg" />
+      {/* Cinematic grade: vignette, bottom weight for the title, fade into the page */}
+      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_65%_25%,transparent_45%,rgba(0,0,0,0.55)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-bg via-black/55 to-transparent" />
 
-      <div className="relative mx-auto w-full max-w-6xl px-6">
-        <p className="section-label hero-rise" style={{ animationDelay: "0.1s" }}>
-          {tHero("tagline")}
-        </p>
+      {/* Corner metadata labels */}
+      <div
+        className="hero-rise absolute left-6 top-24 max-w-[9rem] sm:top-28"
+        style={{ animationDelay: "0.2s" }}
+      >
+        <p className="section-label">{roleLabel}</p>
+      </div>
+      {placeLabel && (
+        <div
+          className="hero-rise absolute right-6 top-24 max-w-[9rem] text-right sm:top-28"
+          style={{ animationDelay: "0.3s" }}
+        >
+          <p className="section-label">{placeLabel}</p>
+        </div>
+      )}
 
-        {/* Name — the authored reveal: a mask wipe up */}
-        <div className="mt-5 overflow-hidden pb-[0.1em]">
+      {/* Bottom block: oversized name overlapping the photo */}
+      <div className="relative mx-auto w-full max-w-7xl px-6 pb-14 sm:pb-16">
+        <div className="overflow-hidden pb-[0.12em]">
           <h1
-            className="hero-wipe text-[3.25rem] leading-[0.95] text-fg sm:text-7xl md:text-8xl"
-            style={{ animationDelay: "0.25s" }}
+            className="hero-wipe font-display font-light leading-[0.86] tracking-[-0.03em] text-fg"
+            style={{
+              animationDelay: "0.25s",
+              fontSize: "clamp(3rem, 12.5vw, 11rem)",
+            }}
           >
             {profile.name}
           </h1>
         </div>
 
         <div
-          className="hero-rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4"
-          style={{ animationDelay: "0.6s" }}
+          className="hero-rise mt-8 flex flex-wrap items-center gap-x-8 gap-y-4"
+          style={{ animationDelay: "0.55s" }}
         >
           <a href="#reel" className="btn-solid">
             <svg
@@ -81,10 +100,10 @@ export default function Hero() {
 
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-8 hidden justify-center sm:flex"
+        className="absolute inset-x-0 bottom-6 hidden justify-center sm:flex"
       >
         <motion.svg
-          className="h-6 w-6 text-fg/50"
+          className="h-6 w-6 text-fg/45"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
