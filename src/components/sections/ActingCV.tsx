@@ -19,40 +19,37 @@ export default function ActingCV() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.15}>
-          <div className="mt-12 border-t border-line pt-8">
+        <Reveal delay={0.1}>
+          <div className="mt-12">
             <h3 className="section-label">{t("creditsTitle")}</h3>
-            <p className="mt-4 max-w-xl text-base text-fg sm:text-lg">
+            <p className="mt-4 max-w-xl text-base text-muted sm:text-lg">
               {t("credits")}
             </p>
-          </div>
-        </Reveal>
 
-        <Reveal delay={0.2}>
-          <div className="mt-12 border-t border-line pt-8">
-            <h3 className="section-label">{t("trainingTitle")}</h3>
-            <ol className="mt-8 space-y-8 border-l border-line pl-6">
+            {/* Experience / training as a clean table box */}
+            <div className="mt-8 overflow-hidden rounded-2xl bg-carbon/40 ring-1 ring-line">
               {profile.training.map((entry) => (
-                <li key={`${entry.period}-${entry.place}`} className="relative">
-                  <span
-                    aria-hidden="true"
-                    className="absolute -left-[calc(1.5rem+0.5px)] top-2 h-2 w-2 -translate-x-1/2 rounded-full bg-fg/70 ring-4 ring-bg"
-                  />
-                  <p className="section-label !tracking-[0.18em]">
-                    {entry.period}
-                  </p>
-                  <p className="mt-2 font-display text-lg text-fg sm:text-xl">
+                <div
+                  key={`${entry.period}-${entry.place}`}
+                  className="grid grid-cols-1 gap-1 border-b border-line px-5 py-5 last:border-b-0 sm:grid-cols-12 sm:items-center sm:gap-4 sm:px-8 sm:py-6"
+                >
+                  <p className="font-display text-lg text-fg sm:col-span-5">
                     {entry.role[locale]}
                   </p>
-                  <p className="mt-1 text-sm text-muted">{entry.place}</p>
-                </li>
+                  <p className="text-sm text-muted sm:col-span-4">
+                    {entry.place}
+                  </p>
+                  <p className="section-label sm:col-span-3 sm:text-right">
+                    {entry.period}
+                  </p>
+                </div>
               ))}
-            </ol>
+            </div>
           </div>
         </Reveal>
 
-        <Reveal delay={0.25}>
-          <div className="mt-12 border-t border-line pt-8">
+        <Reveal delay={0.15}>
+          <div className="mt-14 border-t border-line pt-8">
             <h3 className="section-label">{t("skillsTitle")}</h3>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-fg sm:text-lg">
               {t("skills")}

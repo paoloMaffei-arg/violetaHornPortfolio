@@ -1,34 +1,34 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
-import RevealHeading from "@/components/RevealHeading";
-import RevealImage from "@/components/RevealImage";
 
 export default function About() {
   const t = useTranslations("about");
 
   return (
-    <section id="about" className="w-full bg-bg py-24 sm:py-32">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-10 px-6 md:grid-cols-2 md:items-center md:gap-16">
-        <RevealImage className="group relative aspect-[4/5] w-full overflow-hidden bg-carbon ring-1 ring-line">
-          <Image
-            src="/portfolio/about.jpg"
-            alt={t("imageAlt")}
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover grayscale transition-all duration-[900ms] ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
-          />
-        </RevealImage>
-        <Reveal delay={0.15}>
-          <div>
-            <h2 className="text-4xl text-fg sm:text-5xl">
-              <RevealHeading>{t("title")}</RevealHeading>
-            </h2>
-            <span className="mt-6 block h-px w-16 bg-line-strong" />
-            <p className="mt-6 max-w-md text-base leading-relaxed text-muted sm:text-lg">
-              {t("body")}
-            </p>
-          </div>
+    <section
+      id="about"
+      className="w-full border-t border-line bg-bg py-28 sm:py-40"
+    >
+      <div className="mx-auto w-full max-w-4xl px-6 text-center">
+        <Reveal>
+          <p className="section-label">{t("title")}</p>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <p className="mt-10 font-display text-[1.6rem] font-light leading-[1.4] tracking-[-0.01em] text-fg sm:text-[2.35rem] sm:leading-[1.32]">
+            <span className="mr-3 inline-block h-12 w-16 translate-y-[0.15em] overflow-hidden rounded-xl align-baseline ring-1 ring-line sm:mr-4 sm:h-16 sm:w-24 sm:rounded-2xl">
+              <span className="relative block h-full w-full">
+                <Image
+                  src="/portfolio/about.jpg"
+                  alt={t("imageAlt")}
+                  fill
+                  sizes="96px"
+                  className="object-cover grayscale"
+                />
+              </span>
+            </span>
+            {t("body")}
+          </p>
         </Reveal>
       </div>
     </section>

@@ -29,7 +29,7 @@ export default function Reel() {
   );
 
   const frameClass =
-    "group relative mt-10 aspect-video w-full overflow-hidden bg-carbon ring-1 ring-line";
+    "group relative mt-10 aspect-video w-full overflow-hidden rounded-2xl bg-carbon ring-1 ring-line sm:rounded-3xl";
 
   return (
     <section id="reel" className="w-full bg-bg pb-24 pt-8 sm:pb-32 sm:pt-12">

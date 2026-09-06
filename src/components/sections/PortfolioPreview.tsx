@@ -1,15 +1,12 @@
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
 import RevealHeading from "@/components/RevealHeading";
-import Gallery from "@/components/gallery/Gallery";
+import PortfolioMarquee from "@/components/gallery/PortfolioMarquee";
 import { photos } from "@/content/gallery";
 import { Link } from "@/i18n/routing";
 
-const PREVIEW_COUNT = 6;
-
 export default function PortfolioPreview() {
   const t = useTranslations("portfolio");
-  const preview = photos.slice(0, PREVIEW_COUNT);
 
   return (
     <section id="portfolio" className="w-full bg-bg py-24 sm:py-32">
@@ -27,11 +24,10 @@ export default function PortfolioPreview() {
             </Link>
           </div>
         </Reveal>
-        <Reveal delay={0.15}>
-          <div className="mt-10">
-            <Gallery photos={preview} />
-          </div>
-        </Reveal>
+      </div>
+
+      <div className="mt-12">
+        <PortfolioMarquee photos={photos} />
       </div>
     </section>
   );

@@ -44,14 +44,14 @@ export default function Hero() {
         className="hero-rise absolute left-6 top-24 max-w-[9rem] sm:top-28"
         style={{ animationDelay: "0.2s" }}
       >
-        <p className="section-label">{roleLabel}</p>
+        <p className="section-label hero-label">{roleLabel}</p>
       </div>
       {placeLabel && (
         <div
           className="hero-rise absolute right-6 top-24 max-w-[9rem] text-right sm:top-28"
           style={{ animationDelay: "0.3s" }}
         >
-          <p className="section-label">{placeLabel}</p>
+          <p className="section-label hero-label">{placeLabel}</p>
         </div>
       )}
 
