@@ -27,13 +27,27 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "https://violetahornportfolio.vercel.app";
+
   return {
+    metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        es: "/es",
+        en: "/en",
+        "x-default": "/es",
+      },
+    },
     openGraph: {
       title: t("title"),
       description: t("description"),
       images: ["/og/og.jpg"],
+      url: `/${locale}`,
       locale,
     },
   };
