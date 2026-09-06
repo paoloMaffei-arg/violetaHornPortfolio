@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Reveal from "@/components/Reveal";
 import Gallery from "@/components/gallery/Gallery";
 import { photos } from "@/content/gallery";
@@ -28,6 +28,7 @@ export default async function PortfolioPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "portfolio" });
 
   return (

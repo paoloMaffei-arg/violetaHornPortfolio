@@ -12,7 +12,7 @@ export default function About() {
           <div className="group relative aspect-[4/5] w-full overflow-hidden border border-fg/10 bg-carbon">
             <Image
               src="/portfolio/about.jpg"
-              alt=""
+              alt={t("imageAlt")}
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0"

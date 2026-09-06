@@ -1,6 +1,6 @@
 import { Playfair_Display, Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Nav from "@/components/Nav";
@@ -55,6 +55,8 @@ export default async function LocaleLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   return (
     <html lang={locale}>

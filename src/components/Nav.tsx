@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FocusEvent } from "react";
 import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
 import LangSwitcher from "./LangSwitcher";
 import { profile } from "@/content/profile";
 
@@ -11,6 +12,7 @@ export default function Nav() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const isHome = usePathname() === "/";
 
   const close = () => setOpen(false);
 
@@ -36,25 +38,46 @@ export default function Nav() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-fg/10 bg-bg/80 backdrop-blur-sm">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <a
-            href="#top"
-            onClick={close}
-            aria-label={profile.name}
-            className="font-display text-xl tracking-widest text-fg"
-          >
-            VH
-          </a>
+          {isHome ? (
+            <a
+              href="#top"
+              onClick={close}
+              aria-label={profile.name}
+              className="font-display text-xl tracking-widest text-fg"
+            >
+              VH
+            </a>
+          ) : (
+            <Link
+              href="/"
+              onClick={close}
+              aria-label={profile.name}
+              className="font-display text-xl tracking-widest text-fg"
+            >
+              VH
+            </Link>
+          )}
 
           <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
-            {NAV_ITEMS.map((key) => (
-              <a
-                key={key}
-                href={`#${key}`}
-                className="text-sm uppercase tracking-widest text-fg/80 transition-colors hover:text-fg"
-              >
-                {t(key)}
-              </a>
-            ))}
+            {NAV_ITEMS.map((key) =>
+              isHome ? (
+                <a
+                  key={key}
+                  href={`#${key}`}
+                  className="text-sm uppercase tracking-widest text-fg/80 transition-colors hover:text-fg"
+                >
+                  {t(key)}
+                </a>
+              ) : (
+                <Link
+                  key={key}
+                  href={`/#${key}`}
+                  className="text-sm uppercase tracking-widest text-fg/80 transition-colors hover:text-fg"
+                >
+                  {t(key)}
+                </Link>
+              )
+            )}
             <LangSwitcher />
           </nav>
 
@@ -94,17 +117,29 @@ export default function Nav() {
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        {NAV_ITEMS.map((key) => (
-          <a
-            key={key}
-            href={`#${key}`}
-            onClick={close}
-            tabIndex={open ? 0 : -1}
-            className="font-display text-2xl tracking-widest text-fg"
-          >
-            {t(key)}
-          </a>
-        ))}
+        {NAV_ITEMS.map((key) =>
+          isHome ? (
+            <a
+              key={key}
+              href={`#${key}`}
+              onClick={close}
+              tabIndex={open ? 0 : -1}
+              className="font-display text-2xl tracking-widest text-fg"
+            >
+              {t(key)}
+            </a>
+          ) : (
+            <Link
+              key={key}
+              href={`/#${key}`}
+              onClick={close}
+              tabIndex={open ? 0 : -1}
+              className="font-display text-2xl tracking-widest text-fg"
+            >
+              {t(key)}
+            </Link>
+          )
+        )}
         <LangSwitcher tabIndex={open ? 0 : -1} />
       </div>
     </>
