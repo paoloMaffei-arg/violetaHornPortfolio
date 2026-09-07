@@ -8,25 +8,28 @@ export default function About() {
   return (
     <section
       id="about"
-      className="w-full border-t border-line bg-bg py-28 sm:py-40"
+      className="relative w-full overflow-hidden border-t border-line py-28 sm:py-44"
     >
-      <div className="mx-auto w-full max-w-4xl px-6 text-center">
+      {/* Portrait as a graded background, hero-style */}
+      <div className="absolute inset-0">
+        <Image
+          src="/portfolio/about.jpg"
+          alt={t("imageAlt")}
+          fill
+          sizes="100vw"
+          className="object-cover object-[50%_22%] grayscale"
+        />
+      </div>
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="absolute inset-0 bg-gradient-to-b from-bg via-transparent to-bg" />
+      <div className="absolute inset-0 bg-[radial-gradient(100%_80%_at_50%_45%,transparent_35%,rgba(0,0,0,0.55)_100%)]" />
+
+      <div className="relative mx-auto max-w-4xl px-6 text-center">
         <Reveal>
-          <p className="section-label">{t("title")}</p>
+          <p className="section-label hero-label">{t("title")}</p>
         </Reveal>
         <Reveal delay={0.1}>
-          <p className="mt-10 font-display text-[1.6rem] font-light leading-[1.4] tracking-[-0.01em] text-fg sm:text-[2.35rem] sm:leading-[1.32]">
-            <span className="mr-3 inline-block h-12 w-16 translate-y-[0.15em] overflow-hidden rounded-xl align-baseline ring-1 ring-line sm:mr-4 sm:h-16 sm:w-24 sm:rounded-2xl">
-              <span className="relative block h-full w-full">
-                <Image
-                  src="/portfolio/about.jpg"
-                  alt={t("imageAlt")}
-                  fill
-                  sizes="96px"
-                  className="object-cover grayscale"
-                />
-              </span>
-            </span>
+          <p className="mx-auto mt-10 max-w-3xl font-display text-[1.55rem] font-light leading-[1.42] tracking-[-0.01em] text-fg [text-shadow:0_1px_24px_rgba(0,0,0,0.7)] sm:text-[2.3rem] sm:leading-[1.34]">
             {t("body")}
           </p>
         </Reveal>

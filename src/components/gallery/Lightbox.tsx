@@ -21,6 +21,21 @@ export default function Lightbox({
   const goPrev = () => setCurrent((c) => (c - 1 + photos.length) % photos.length);
   const goNext = () => setCurrent((c) => (c + 1) % photos.length);
 
+  // Swipe navigation for touch devices.
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) > 45) {
+      if (dx < 0) goNext();
+      else goPrev();
+    }
+    touchStartX.current = null;
+  };
+
   useEffect(() => {
     closeButtonRef.current?.focus();
     // Only run once, when the lightbox first mounts.
@@ -77,6 +92,8 @@ export default function Lightbox({
       aria-label={photo.alt}
       className="fixed inset-0 z-[100] flex items-center justify-center bg-bg/95 backdrop-blur-sm"
       onClick={onClose}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
       <button
         ref={closeButtonRef}

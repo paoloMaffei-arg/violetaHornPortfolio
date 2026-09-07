@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { profile } from "@/content/profile";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -9,7 +8,6 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export default function Hero() {
   const tHero = useTranslations("hero");
   const tContact = useTranslations("contact");
-  const reduceMotion = useReducedMotion();
 
   const whatsappUrl = buildWhatsAppUrl(profile.whatsapp, tContact("prefill"));
 
@@ -98,22 +96,6 @@ export default function Hero() {
         </div>
       </div>
 
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-6 hidden justify-center sm:flex"
-      >
-        <motion.svg
-          className="h-6 w-6 text-fg/45"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.25}
-          animate={reduceMotion ? undefined : { y: [0, 7, 0] }}
-          transition={{ repeat: Infinity, ease: "easeInOut", duration: 2.4 }}
-        >
-          <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </motion.svg>
-      </div>
     </section>
   );
 }

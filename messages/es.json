@@ -2,7 +2,7 @@
   "nav": { "reel": "Reel", "about": "Sobre mí", "portfolio": "Portfolio", "acting": "Actriz", "contact": "Contacto" },
   "hero": { "tagline": "Actriz · Buenos Aires", "watchReel": "Ver reel", "whatsapp": "WhatsApp" },
   "reel": { "title": "Reel", "play": "Reproducir" },
-  "about": { "title": "Sobre mí", "body": "Tengo 21 años. Estudio la Licenciatura en Artes Escénicas y el Traductorado Público en UADE (CABA). Tomo clases de danza contemporánea, jazz y urbano, y soy nivel intermedio-avanzado en acrobacia.", "imageAlt": "Violeta Horn — retrato editorial" },
+  "about": { "title": "Sobre mí", "body": "Soy actriz y tengo 21 años. Estudio la Licenciatura en Artes Escénicas y el Traductorado Público en UADE (Universidad Argentina de la Empresa), en la Ciudad Autónoma de Buenos Aires. Asimismo, soy nivel intermedio-avanzado de acrobacia de piso y bailo danza contemporánea, jazz y urbana.", "imageAlt": "Violeta Horn — retrato editorial" },
   "stats": { "title": "Ficha técnica", "height": "Altura", "measures": "Medidas", "top": "Remera", "pants": "Pantalón", "shoes": "Calzado", "hair": "Pelo", "eyes": "Ojos", "hairValue": "Castaño", "eyesValue": "Negros", "representation": "Representación (audiovisual)", "downloadCard": "Descargar comp card" },
   "portfolio": { "title": "Portfolio", "all": "Todo", "moda": "Moda", "beauty": "Beauty", "comercial": "Comercial", "editorial": "Editorial", "viewAll": "Ver galería completa" },
   "acting": { "title": "Actriz", "creditsTitle": "Experiencia", "credits": "Cortos universitarios", "trainingTitle": "Formación", "skillsTitle": "Skills", "skills": "Español · Inglés · Danza contemporánea · Jazz · Urbano · Acrobacia de piso (intermedio-avanzado) · Carnet náutico · Carnet de auto", "downloadCV": "Descargar CV" },
