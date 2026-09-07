@@ -51,20 +51,11 @@ export async function generateMetadata({
       description: t("description"),
       url: `/${locale}`,
       locale,
-      images: [
-        {
-          url: "/og/og.jpg",
-          width: 1200,
-          height: 630,
-          alt: t("title"),
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/og/og.jpg"],
     },
   };
 }
