@@ -23,7 +23,7 @@ export default function PortfolioMarquee({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      <div className="marquee-group relative overflow-hidden motion-reduce:overflow-x-auto">
+      <div className="relative overflow-hidden">
         <div className="flex w-max animate-marquee gap-4 sm:gap-6">
           {loop.map((photo, i) => {
             const realIndex = i % photos.length;
@@ -49,10 +49,6 @@ export default function PortfolioMarquee({ photos }: { photos: Photo[] }) {
             );
           })}
         </div>
-
-        {/* Edge fades into the page */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-bg to-transparent sm:w-28" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-bg to-transparent sm:w-28" />
       </div>
 
       {openIndex !== null && (

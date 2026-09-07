@@ -227,14 +227,11 @@ body::after {
     transform: translateX(-50%);
   }
 }
+/* Auto-scrolls on every device by explicit design choice — the client wants
+   the carousel to move even when the OS requests reduced motion. */
 .animate-marquee {
   animation: marquee 60s linear infinite;
   will-change: transform;
-}
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation: none;
-  }
 }
 
 /* --- Hero load reveal (CSS so the settled state is the default) --- */
