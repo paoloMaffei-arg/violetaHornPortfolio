@@ -1,11 +1,11 @@
 {
   "nav": { "reel": "Reel", "about": "About", "portfolio": "Portfolio", "acting": "Acting", "contact": "Contact" },
-  "hero": { "tagline": "Actress & Model · Buenos Aires", "watchReel": "Watch reel", "whatsapp": "WhatsApp" },
+  "hero": { "tagline": "Actress · Buenos Aires", "watchReel": "Watch reel", "whatsapp": "WhatsApp" },
   "reel": { "title": "Reel", "play": "Play" },
-  "about": { "title": "About me", "body": "I'm 21 years old. I'm studying for a Bachelor's degree in Performing Arts and a Public Translation degree at UADE (Buenos Aires City). I take classes in contemporary dance, jazz, and urban dance, and I'm at an intermediate-advanced level in acrobatics.", "imageAlt": "Violeta Horn — editorial portrait" },
+  "about": { "title": "About me", "body": "I'm an actress and I'm 21 years old. I'm studying for a Bachelor's degree in Performing Arts and a Public Translation degree at UADE (Universidad Argentina de la Empresa), in the City of Buenos Aires. I'm also at an intermediate-advanced level in floor acrobatics, and I dance contemporary, jazz, and urban.", "imageAlt": "Violeta Horn — editorial portrait" },
   "stats": { "title": "Spec sheet", "height": "Height", "measures": "Measurements", "top": "Top", "pants": "Pants", "shoes": "Shoes", "hair": "Hair", "eyes": "Eyes", "hairValue": "Brown", "eyesValue": "Black", "representation": "Representation (audiovisual)", "downloadCard": "Download comp card" },
   "portfolio": { "title": "Portfolio", "all": "All", "moda": "Fashion", "beauty": "Beauty", "comercial": "Commercial", "editorial": "Editorial", "viewAll": "View full gallery" },
-  "acting": { "title": "Acting", "creditsTitle": "Credits", "credits": "University short films", "trainingTitle": "Training", "skillsTitle": "Skills", "skills": "Spanish · English · Contemporary dance · Jazz · Urban dance · Floor acrobatics (intermediate-advanced) · Boating license · Driver's license", "downloadCV": "Download CV" },
+  "acting": { "title": "Acting", "creditsTitle": "Experience", "credits": "University short films", "trainingTitle": "Training", "skillsTitle": "Skills", "skills": "Spanish · English · Contemporary dance · Jazz · Urban dance · Floor acrobatics (intermediate-advanced) · Boating license · Driver's license", "downloadCV": "Download CV" },
   "contact": { "title": "Contact", "lead": "Shall we work together?", "whatsapp": "Message me on WhatsApp", "prefill": "Hi Violeta, I'm contacting you from your website." },
   "footer": { "rights": "All rights reserved" },
   "meta": { "title": "Violeta Horn — Actress & Model", "description": "Portfolio of Violeta Horn, actress and model based in Buenos Aires. Reel, photo book, spec sheet, and contact." }

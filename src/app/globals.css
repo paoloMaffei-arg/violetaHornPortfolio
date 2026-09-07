@@ -2,18 +2,49 @@
 
 :root {
   --bg: #0a0a0a;
+  --bg-2: #0c0c0b;
   --fg: #f4f2ee;
   --carbon: #141414;
-  --muted: #8a8a8a;
+  --muted: #968f85;
+  --line: rgba(244, 242, 238, 0.12);
+  --line-strong: rgba(244, 242, 238, 0.28);
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-bg2: var(--bg-2);
   --color-fg: var(--fg);
   --color-carbon: var(--carbon);
   --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-fraunces);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 html,
@@ -25,11 +56,231 @@ body {
 body {
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* Editorial display face — high-contrast serif, tuned for large sizes */
 h1,
 h2,
 h3,
 .display {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+/* Light text on a dark ground reads thin — give body a touch more air */
+p {
+  text-wrap: pretty;
+}
+
+/* --- Browser surfaces: themed, not default --- */
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 3px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3a3a38 var(--bg);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #33322f;
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4844;
+}
+
+a {
+  text-underline-offset: 4px;
+}
+
+/* --- Film grain: subtle cinematic texture over the whole page --- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Call-to-action: solid primary --- */
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--bg);
+  background: var(--fg);
+  transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-solid:hover {
+  background: #fffdf8;
+}
+.btn-solid .arrow {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-solid:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* --- Call-to-action: ghost link with an underline that wipes in --- */
+.link-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--fg);
+}
+.link-cta::after {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  right: 0.2rem;
+  bottom: 0.55rem;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-cta:hover::after {
+  transform: scaleX(1);
+}
+
+/* Small inline underline for secondary links (view all, etc.) */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Section overline label */
+.section-label {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+
+/* Hero corner labels — white + shadow so they read over the photo */
+.hero-label {
+  color: var(--fg);
+  text-shadow: 0 1px 20px rgba(0, 0, 0, 0.85), 0 0 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Auto-scrolling portfolio marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* Auto-scrolls on every device by explicit design choice — the client wants
+   the carousel to move even when the OS requests reduced motion. */
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+  will-change: transform;
+}
+
+/* --- Hero load reveal (CSS so the settled state is the default) --- */
+@keyframes hero-settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes wipe-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.hero-img {
+  animation: hero-settle 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-rise {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-wipe {
+  animation: wipe-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-solid,
+  .btn-solid .arrow,
+  .link-cta::after,
+  .link-underline::after {
+    transition: none;
+  }
+  .hero-img,
+  .hero-rise,
+  .hero-wipe {
+    animation: none;
+  }
 }

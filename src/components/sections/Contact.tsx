@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
+import RevealHeading from "@/components/RevealHeading";
 import SocialLinks from "@/components/SocialLinks";
 import { profile } from "@/content/profile";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
@@ -12,12 +13,12 @@ export default function Contact() {
     <section id="contact" className="w-full bg-carbon py-24 sm:py-32">
       <div className="mx-auto flex w-full max-w-3xl flex-col items-center px-6 text-center">
         <Reveal>
-          <h2 className="font-display text-3xl tracking-wide text-fg sm:text-4xl">
-            {t("title")}
+          <h2 className="text-4xl text-fg sm:text-6xl">
+            <RevealHeading>{t("title")}</RevealHeading>
           </h2>
         </Reveal>
         <Reveal delay={0.15}>
-          <p className="mt-4 max-w-md text-base text-muted sm:text-lg">
+          <p className="mt-6 max-w-md text-base text-muted sm:text-lg">
             {t("lead")}
           </p>
         </Reveal>
@@ -26,9 +27,12 @@ export default function Contact() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-block border border-fg/40 px-10 py-4 text-sm uppercase tracking-widest text-fg transition-colors hover:border-fg hover:bg-fg hover:text-bg"
+            className="btn-solid mt-12"
           >
             {t("whatsapp")}
+            <span aria-hidden="true" className="arrow">
+              ↗
+            </span>
           </a>
         </Reveal>
         <Reveal delay={0.4}>

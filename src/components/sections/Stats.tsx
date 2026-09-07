@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Reveal from "@/components/Reveal";
+import RevealHeading from "@/components/RevealHeading";
 import { profile } from "@/content/profile";
 
 function formatHeight(heightCm: number): string {
@@ -29,21 +30,19 @@ export default function Stats() {
     <section id="stats" className="w-full bg-bg py-24 sm:py-32">
       <div className="mx-auto w-full max-w-6xl px-6">
         <Reveal>
-          <h2 className="font-display text-3xl tracking-wide text-fg sm:text-4xl">
-            {t("title")}
-          </h2>
+          <div className="flex items-end gap-6">
+            <h2 className="shrink-0 text-4xl text-fg sm:text-5xl">
+              <RevealHeading>{t("title")}</RevealHeading>
+            </h2>
+            <span className="mb-2 h-px flex-1 bg-line" />
+          </div>
         </Reveal>
         <Reveal delay={0.15}>
-          <dl className="mt-10 grid grid-cols-1 gap-x-10 gap-y-6 border-t border-fg/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          <dl className="mt-12 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
             {rows.map((row) => (
-              <div
-                key={row.label}
-                className="border-b border-fg/10 pb-4"
-              >
-                <dt className="text-xs uppercase tracking-[0.2em] text-muted">
-                  {row.label}
-                </dt>
-                <dd className="mt-2 font-display text-xl text-fg">
+              <div key={row.label} className="border-b border-line pb-4">
+                <dt className="section-label">{row.label}</dt>
+                <dd className="mt-3 font-display text-xl tabular-nums text-fg">
                   {row.value}
                 </dd>
               </div>

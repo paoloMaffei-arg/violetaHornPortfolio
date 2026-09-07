@@ -40,15 +40,15 @@ export default function VideoFacade({
         alt=""
         fill
         sizes="(min-width: 1024px) 896px, 100vw"
-        className="object-cover"
+        className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
       />
-      <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/35">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full border border-fg/60 bg-black/40 backdrop-blur-sm transition-transform group-hover:scale-110 sm:h-20 sm:w-20">
+      <span className="absolute inset-0 flex items-center justify-center bg-black/15 transition-colors duration-500 group-hover:bg-black/30">
+        <span className="flex h-20 w-20 items-center justify-center rounded-full border border-fg/70 bg-black/20 text-fg backdrop-blur-sm transition-all duration-500 ease-out group-hover:scale-105 group-hover:border-fg group-hover:bg-fg group-hover:text-bg sm:h-24 sm:w-24">
           <svg
             aria-hidden="true"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="ml-1 h-6 w-6 text-fg sm:h-7 sm:w-7"
+            className="ml-1 h-7 w-7 sm:h-8 sm:w-8"
           >
             <path d="M8 5v14l11-7z" />
           </svg>
