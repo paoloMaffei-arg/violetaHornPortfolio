@@ -90,7 +90,7 @@ export default function Lightbox({
       role="dialog"
       aria-modal="true"
       aria-label={photo.alt}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-bg/95 backdrop-blur-sm"
+      className="lightbox-backdrop fixed inset-0 z-[100] flex items-center justify-center bg-bg/95 backdrop-blur-sm"
       onClick={onClose}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
@@ -117,19 +117,26 @@ export default function Lightbox({
         &#8249;
       </button>
 
+      {/* Frame materializes (scale + fade) on open via CSS @starting-style;
+          the photo itself cross-fades when navigating (keyed remount). */}
       <div
-        className="relative flex h-[80vh] w-[90vw] max-w-4xl items-center justify-center"
+        className="lightbox-frame relative flex h-[80vh] w-[90vw] max-w-4xl items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <Image
-          src={photo.src}
-          alt={photo.alt}
-          width={photo.width}
-          height={photo.height}
-          sizes="90vw"
-          className="max-h-full max-w-full object-contain"
-          priority
-        />
+        <div
+          key={current}
+          className="lightbox-photo relative flex h-full w-full items-center justify-center"
+        >
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            width={photo.width}
+            height={photo.height}
+            sizes="90vw"
+            className="max-h-full max-w-full object-contain"
+            priority
+          />
+        </div>
       </div>
 
       <button

@@ -43,7 +43,7 @@ export default function PortfolioMarquee({ photos }: { photos: Photo[] }) {
                   alt={photo.alt}
                   fill
                   sizes="(min-width: 640px) 42vw, 75vw"
-                  className="object-cover grayscale transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
+                  className="object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 [@media(hover:hover)]:group-hover:scale-105"
                 />
               </button>
             );
