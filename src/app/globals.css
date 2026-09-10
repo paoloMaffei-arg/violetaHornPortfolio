@@ -8,6 +8,7 @@
   --muted: #968f85;
   --line: rgba(244, 242, 238, 0.12);
   --line-strong: rgba(244, 242, 238, 0.28);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -140,14 +141,17 @@ body::after {
   letter-spacing: 0.22em;
   color: var(--bg);
   background: var(--fg);
-  transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background 0.4s var(--ease-out), transform 0.14s ease-out;
 }
 .btn-solid:hover {
   background: #fffdf8;
 }
+/* Press feedback: respond on pointer-down, subtle and fast (apple-design §1) */
+.btn-solid:active {
+  transform: scale(0.97);
+}
 .btn-solid .arrow {
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.4s var(--ease-out);
 }
 .btn-solid:hover .arrow {
   transform: translateX(4px);
@@ -165,6 +169,10 @@ body::after {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--fg);
+  transition: transform 0.14s ease-out;
+}
+.link-cta:active {
+  transform: scale(0.97);
 }
 .link-cta::after {
   content: "";
@@ -281,6 +289,42 @@ body::after {
   .hero-img,
   .hero-rise,
   .hero-wipe {
+    animation: none;
+  }
+}
+
+/* --- Lightbox: materialize on open via keyframes. The element's natural
+   state is fully visible, so if the animation is disabled (reduced motion)
+   it simply shows — it can never get stuck invisible. --- */
+@keyframes lb-backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes lb-frame-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+@keyframes lb-photo-in {
+  from {
+    opacity: 0;
+  }
+}
+.lightbox-backdrop {
+  animation: lb-backdrop-in 0.25s var(--ease-out);
+}
+.lightbox-frame {
+  animation: lb-frame-in 0.35s var(--ease-out);
+}
+.lightbox-photo {
+  animation: lb-photo-in 0.22s var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-backdrop,
+  .lightbox-frame,
+  .lightbox-photo {
     animation: none;
   }
 }

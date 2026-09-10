@@ -37,7 +37,7 @@ export default function Gallery({ photos }: { photos: Photo[] }) {
               alt={photo.alt}
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-              className="object-cover grayscale transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
+              className="object-cover grayscale transition-all duration-700 ease-out group-hover:grayscale-0 [@media(hover:hover)]:group-hover:scale-105"
             />
           </button>
         ))}
