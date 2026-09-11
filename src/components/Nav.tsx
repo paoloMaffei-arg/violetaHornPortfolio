@@ -56,7 +56,7 @@ export default function Nav() {
       {/* Floating shell — no full-bleed bar; the capsule hovers over the page. */}
       <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
         <div
-          className={`flex w-full items-center justify-between rounded-full border border-line-strong bg-bg/55 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-[padding,background-color] duration-500 ease-out supports-[backdrop-filter]:bg-bg/45 md:w-auto md:justify-center ${
+          className={`flex w-full items-center justify-between rounded-full border border-line-strong bg-bg/30 shadow-[0_10px_40px_-12px_rgba(0,0,0,0.7)] backdrop-blur-xl transition-[padding,background-color] duration-500 ease-out supports-[backdrop-filter]:bg-bg/20 md:w-auto md:justify-center md:bg-bg/55 md:supports-[backdrop-filter]:bg-bg/45 ${
             scrolled ? "px-4 py-2 sm:px-5" : "px-5 py-2.5 sm:px-6 sm:py-3"
           }`}
         >
@@ -137,18 +137,23 @@ export default function Nav() {
         ref={menuRef}
         aria-hidden={!open}
         onBlur={handleMenuBlur}
-        className={`fixed inset-x-0 top-0 bottom-0 z-40 flex flex-col items-center justify-center gap-8 bg-bg/95 backdrop-blur-xl transition-opacity duration-200 md:hidden ${
+        className={`fixed inset-x-0 top-0 bottom-0 z-40 flex flex-col items-center justify-center gap-8 bg-bg/60 backdrop-blur-2xl transition-opacity duration-[400ms] ease-out md:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        {NAV_ITEMS.map((key) =>
-          isHome ? (
+        {NAV_ITEMS.map((key, i) => {
+          const itemCls = `font-display text-2xl tracking-widest text-fg transition-[opacity,transform] duration-500 ease-out ${
+            open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`;
+          const itemStyle = { transitionDelay: open ? `${90 + i * 55}ms` : "0ms" };
+          return isHome ? (
             <a
               key={key}
               href={`#${key}`}
               onClick={close}
               tabIndex={open ? 0 : -1}
-              className="font-display text-2xl tracking-widest text-fg"
+              className={itemCls}
+              style={itemStyle}
             >
               {t(key)}
             </a>
@@ -158,13 +163,23 @@ export default function Nav() {
               href={`/#${key}`}
               onClick={close}
               tabIndex={open ? 0 : -1}
-              className="font-display text-2xl tracking-widest text-fg"
+              className={itemCls}
+              style={itemStyle}
             >
               {t(key)}
             </Link>
-          )
-        )}
-        <LangSwitcher tabIndex={open ? 0 : -1} />
+          );
+        })}
+        <div
+          className={`transition-[opacity,transform] duration-500 ease-out ${
+            open ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+          }`}
+          style={{
+            transitionDelay: open ? `${90 + NAV_ITEMS.length * 55}ms` : "0ms",
+          }}
+        >
+          <LangSwitcher tabIndex={open ? 0 : -1} />
+        </div>
       </div>
     </>
   );
